@@ -23,6 +23,7 @@ Note:
 //
 //     insert(word) {
 //         let node = this.root;
+//         // The for/of statement loops through the values of an iterable object.
 //         for (let character of word) {
 //             // if !node[character], we create a new map {} as there are more character need to be added in this map, and let node = this new node, then continue the loop
 //             if (!node[character]) node[character] = {};
