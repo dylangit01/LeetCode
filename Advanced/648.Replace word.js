@@ -5,65 +5,101 @@
 // 如果当前字母对应的结点的表示isWord是true，我们就返回这个前缀，如果当前字母对应的结点在前缀树中不存在，
 // 我们就返回原单词，这样就能完美的解决问题了
 
+// class Trie {
+//     constructor() {
+//         this.root = {}
+//     }
+//
+//     // add/insert dict word as the prefix tree word as reference
+//     insert(word){
+//         let node = this.root;
+//         for(let char of word){
+//             if(!node[char]) node[char] = {};
+//             node = node[char]
+//         }
+//         node.end = true
+//     }
+//
+//     // judge if the word of sentence matches with root word
+//     getRootWord(word){
+//         let node = this.root;
+//         let rootWord = '';
+//
+//         for(let char of word) {
+//             // match if the char of word belongs to Trie.node
+//             if (node[char]) {
+//                 rootWord += char;
+//                 // when found the 1st matched word, if it's end === true, return this rootWord, if not, continue loop
+//                 if(node[char].end) return rootWord;
+//                 // dont forget to loop through the word
+//                 node = node[char]
+//             } else return null
+//             // this else condition is very important, if without this condition,
+//             // the char will loop over every word and return any word that matches with the dict rootWord
+//             // with this condition, it only return rootWord when the first char matches with the dict rootWord
+//         }
+//         // if no rootWord found, return null
+//         return null
+//     }
+// }
+//
+// const replaceWords = (dict, sentence) => {
+//     const t = new Trie();
+//     for(const rootWord of dict){
+//         t.insert(rootWord)
+//     }
+//     // The split() method is used to split a string into an array of substrings,
+//     // and returns the new array. i.e: "How are you doing today?" => [How are you doing today?]
+//     // If split(' '), then return ['How', 'are', 'you', 'doing', 'today?']
+//     // If an empty string ("") is used as the separator,
+//     // the string is split between each character. i.e: [H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?]
+//     let words = sentence.split(" ");   // here needs to use split(' ')
+//     for(let i =0; i < words.length; i ++){
+//         let root = t.getRootWord(words[i]);
+//         if(root) words[i] = root   // if matches with root word and return true, replace the words[i] to this rootWord
+//     }
+//     return words.join(" ")
+// };
+
+// Method 2:
 class Trie {
     constructor() {
         this.root = {}
     }
 
-    // add/insert dict word as the prefix tree word as reference
     insert(word){
         let node = this.root;
         for(let char of word){
-            if(!node[char]) node[char] = {};
+            if(!node[char]) node[char] ={};
             node = node[char]
         }
         node.end = true
     }
 
-    // judge if the word of sentence matches with root word
-    getRootWord(word){
+    matchRootWords(word){
         let node = this.root;
         let rootWord = '';
 
-        for(let char of word) {
-            // match if the char of word belongs to Trie.node
-            if (node[char]) {
+        for(let char of word){
+            if(node[char]){
                 rootWord += char;
-                // when found the 1st matched word, if it's end === true, return this rootWord, if not, continue loop
                 if(node[char].end) return rootWord;
-                // looping through the word
                 node = node[char]
-            } else return null
-            // this else condition is very important, if without this condition,
-            // the char will loop over every word and return any word that matches with the dict rootWord
-            // with this condition, it only return rootWord when the first char matches with the dict rootWord
+                //change below null to word if using map method of replaceWords fun
+            } else return word
         }
-        // if no rootWord found, return null
-        return null
+        return word
     }
 }
 
 const replaceWords = (dict, sentence) => {
-    const t = new Trie();
-    for(const rootWord of dict){
-        t.insert(rootWord)
+    const tire = new Trie()
+    for(let word of dict){
+        tire.insert(word)
     }
-    // The split() method is used to split a string into an array of substrings,
-    // and returns the new array. i.e: "How are you doing today?" => [How are you doing today?]
-    // If split(' '), then return ['How', 'are', 'you', 'doing', 'today?']
-    // If an empty string ("") is used as the separator,
-    // the string is split between each character. i.e: [H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?]
-    let words = sentence.split(" ");   // here needs to use split(' ')
-    for(let i =0; i < words.length; i ++){
-        let root = t.getRootWord(words[i]);
-        if(root) words[i] = root   // if matches with root word and return true, replace the words[i] to this rootWord
-    }
-    return words.join(" ")
+
+    return sentence.split(' ').map(word => tire.matchRootWords(word)).join(' ')
 };
-
-
-
-
 
 
 
