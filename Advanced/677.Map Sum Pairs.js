@@ -46,6 +46,7 @@ class MapSumII{
     mapSum(prefix){
         let sum = 0;
         for(let key in this.map){
+            // as long as key starts with the same character as prefix, it === 0
             if(key.indexOf(prefix) === 0) sum += this.map[key];
             // if(prefix === key.substring(0, prefix.length)) sum += this.map[key]
         }
