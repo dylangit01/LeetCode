@@ -93,7 +93,7 @@ class Trie {
 }
 
 const replaceWords = (dict, sentence) => {
-    const tire = new Trie()
+    const tire = new Trie();
     for(let word of dict){
         tire.insert(word)
     }
