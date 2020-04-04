@@ -1,4 +1,5 @@
 let longestWord = (words)=>{
+    // create a set Object base on this string array words
     let set = new Set(words);
     let result = '';
     words.forEach(a => {
