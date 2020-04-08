@@ -16,6 +16,7 @@ var mergeKLists = function (lists) {
     // null check:
     if(!lists || lists.length < 1) return null;
 
+    // first part is the same as LeetCode question 21 to merge two sorted linked lists
    let mergeTwoLists = (l1, l2) => {
         let res = new ListNode();
         let curNode = res;
@@ -42,10 +43,15 @@ var mergeKLists = function (lists) {
         return res.next
     };
 
+    // second part is using loop to use first part to narrow down the lists from [0] and [length -1]
     let curLists = lists;
+    // while the lists only has one item, the loop ends
     while(curLists.length > 1){
         let n = curLists.length, i = 0, j = n-1;
         let newLists = [];
+        // while(i <= j) loop means the merge is from two sides to middle;
+        // It has two situations: one is i !== j, so continue merge two sides lists to one
+        // until one list left, which is i === j; then add to newLists
         while(i <=j ){
             if(i === j){
                 newLists.push(curLists[i])
@@ -56,7 +62,10 @@ var mergeKLists = function (lists) {
             i++;
             j--;
         }
+        // after merging all lists, only one merged list === curLists
         curLists = newLists
     }
+    // then we need to return this curLists, but we need to return the node, not whole list,
+    // so using curLists[0], although it only has one list inside
     return curLists[0]
 };
