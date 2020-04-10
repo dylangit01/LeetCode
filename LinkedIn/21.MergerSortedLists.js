@@ -38,18 +38,22 @@ var mergeTwoLists = (l1, l2) => {
         // we also need to let curNode = curNode.next for each loop to store new list node
         curNode = curNode.next;
     }
-    // below is to consider if both length are not same, say l1 is longer than l2
-    while(l1){
-        curNode.next = l1;
-        l1 = l1.next;
-        curNode = curNode.next;
-    }
+    // one line replaces all below codes from line 45- 55
+    curNode.next = l1 !== null ? l1 : l2;
 
-    while(l2){
-        curNode.next = l2;
-        l2 = l2.next;
-        curNode = curNode.next;
-    }
+    // below is to consider if both length are not same, say l1 is longer than l2
+    // while(l1){
+    //     curNode.next = l1;
+    //     l1 = l1.next;
+    //     curNode = curNode.next;
+    // }
+    //
+    // while(l2){
+    //     curNode.next = l2;
+    //     l2 = l2.next;
+    //     curNode = curNode.next;
+    // }
+
     // we need to return the newNode.next since we put all listNodes into this newNode one by one
     return newNode.next
 };
