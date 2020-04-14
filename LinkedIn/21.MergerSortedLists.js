@@ -28,7 +28,7 @@ var mergeTwoLists = (l1, l2) => {
     while(l1 && l2){
         if(l1.val < l2.val){
             curNode.next = l1;
-            // let this loop continue run untill l1.next = null, while loop ends
+            // let this loop continue run until l1.next = null, while loop ends
             l1 = l1.next;
         } else {
             // same to l2
