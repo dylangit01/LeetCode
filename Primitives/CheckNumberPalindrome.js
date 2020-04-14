@@ -33,3 +33,26 @@ const isPalindrome = (x) => {
     // if all above conditions met, we return true, otherwise in for loop, we already return false
     return true;
 };
+
+// Practice:
+checkNumPalindrome = (num) => {
+    if (num < 0) return false;
+
+    const logarithmNum = Math.log10(num);
+    const totalDigits = Math.floor(logarithmNum) + 1;
+
+    let maskNum = Math.pow(10, totalDigits - 1);
+    for (let i = 0; i < num.length; i++) {
+        let mostLeftDigt = Math.floor(num / maskNum);
+        let mostRightDigt = num % 10;
+        if (mostLeftDigt !== mostRightDigt) return false;
+        num %= maskNum;
+        num = Math.floor(num / 10);
+        maskNum /= 100;
+    }
+    return true;
+};
+
+// Only single loop with all constant time here, so time/space complexity both are O(n)
+
+
