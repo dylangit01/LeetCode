@@ -7,8 +7,8 @@
 const oddEvenList = (head) => {
     if(head === null || head.next === null) return head;
 
-    const oddDummyHead = new LinkedList(-1);
-    const evenDummyHead = new LinkedList(-1);
+    const oddDummyHead = new ListNode(-1);
+    const evenDummyHead = new ListNode(-1);
 
     // Initial status is letting tail = dummyHead
     let oddTail = oddDummyHead;
