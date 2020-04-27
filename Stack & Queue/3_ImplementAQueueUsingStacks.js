@@ -52,7 +52,7 @@ myQ.dequeue();
 myQ.enqueue(7);
 myQ.dequeue();
 myQ.peek();
-myQ.size()
+myQ.size();
 
 /* For this question, what is the time and space complexity?
     Well, the operation worse case is O(n), but the algorithm worst case is O(1), because the "Amortized Analysis" meaning => how often that operation happen?, so the way of binding the time is
