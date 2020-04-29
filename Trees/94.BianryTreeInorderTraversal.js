@@ -34,3 +34,13 @@ var inorderTraversal = function (root) {
     }
     return traversalNums;
 };
+
+// Recursion method:
+var inorderTraversalRe = function(root) {
+    if(!root) return [];
+    const res = [];
+    res.push(...inorderTraversal(root.left));
+    res.push(root.val);
+    res.push(...inorderTraversal(root.right))
+    return res;
+};
