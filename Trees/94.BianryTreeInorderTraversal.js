@@ -17,11 +17,11 @@ var inorderTraversal = function (root) {
 
     // The while loop ends when no item in the stack AND the curr goes to null, either one available, the loop will continue
     while (stack.length !== 0 || curr !== null) {
-    /*
-     * Left: go as left as possible, the stack keeps the history of nodes that need
-     * searching
-     */
-        while (curr !== null) {
+        /*
+         * Left: go as left as possible, the stack keeps the history of nodes that need
+         * searching
+         */
+        while (curr) {
             stack.push(curr);
             curr = curr.left;
         }
@@ -36,8 +36,8 @@ var inorderTraversal = function (root) {
 };
 
 // Recursion method:
-var inorderTraversalRe = function(root) {
-    if(!root) return [];
+var inorderTraversalRe = function (root) {
+    if (!root) return [];
     const res = [];
     res.push(...inorderTraversal(root.left));
     res.push(root.val);
