@@ -30,16 +30,20 @@ var mergeKLists = function (lists) {
             }
             curNode = curNode.next;
         }
-        while (l1){
-            curNode.next = l1;
-            l1 = l1.next;
-            curNode = curNode.next;
-        }
-        while (l2){
-            curNode.next = l2;
-            l2 = l2.next;
-            curNode = curNode.next;
-        }
+
+       // one line replaces all below codes:
+       curNode.next = l1 !== null ? l1 : l2;
+
+        // while (l1){
+        //     curNode.next = l1;
+        //     l1 = l1.next;
+        //     curNode = curNode.next;
+        // }
+        // while (l2){
+        //     curNode.next = l2;
+        //     l2 = l2.next;
+        //     curNode = curNode.next;
+        // }
         return res.next
     };
 
