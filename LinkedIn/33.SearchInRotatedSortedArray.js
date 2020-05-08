@@ -3,28 +3,32 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
+var search = function (nums, target) {
     // find sort
     // binary search realMid
     let n = nums.length;
-    if(n < 1) return -1;
-    else if(n < 2) return nums[0] === target ? 0 : -1;
+    if (n < 1) return -1;
+    else if (n < 2) return nums[0] === target ? 0 : -1;
 
-    let s = 0, e = n-1;
-    while (s<e) {
-        let mid = Math.floor((s+e)/2);
-        if(nums[mid] > nums[e]) s = mid + 1;
-        else e = mid;
+    let left = 0, right = n - 1;
+    while (left < right) {
+        let mid = Math.floor((left + right) / 2);
+        if (nums[mid] > nums[right]) left = mid + 1;
+        else right = mid;
     }
-    let rot = s;
-    s = 0;
-    e = n-1;
-    while (s<=e){
-        let mid = Math.floor((s+e)/2);
-        let realMid = (mid + rot) % n;
-        if(nums[realMid] === target) return realMid;
-        else if(nums[realMid] > target) e = mid -1;
-        else s = mid + 1
+    let rotateIndex = left;
+    left = 0;
+    right = n - 1;
+    while (left <= right) {
+        let mid = Math.floor((left + right) / 2);
+
+        // this calculation can get the real mid Index of sorted array(before rotated),
+        // and binary search is searching based on the real mid index value
+        let realMidIndex = (mid + rotateIndex) % n;
+
+        if (nums[realMidIndex] === target) return realMidIndex;
+        else if (nums[realMidIndex] > target) right = mid - 1;
+        else left = mid + 1
     }
     return -1
 };

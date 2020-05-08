@@ -10,6 +10,7 @@ const findMin = (nums) => {
    let left = 0;
    let right = nums.length - 1;
 
+   // the left and right calculation happens only one time for each while loop, so eventually the left === right === min
    while (left < right) {
        const mid = left + Math.floor((right-left)/2);
 

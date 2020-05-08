@@ -21,6 +21,8 @@ class ListNode {
 }
 
 var mergeTwoLists = (l1, l2) => {
+    if(!l1 && !l2) return null;
+
     let newNode = new ListNode();
     let curNode = newNode;
 
@@ -94,5 +96,39 @@ mergeSortedArrays = (array1, array2) => {
     }
     return mergedArray;
 };
+
+// Practice for method one:
+class Node {
+    constructor(val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+const mergeTwoListsPrac = (l1, l2) => {
+    if(!l2 && !l2) return null;
+
+    let newNode = new Node();
+    let currNode = newNode;
+
+    while (l1 && l2){
+        if(l1.val < l2.val){
+            currNode.next = l1;
+            l1 = l1.next;
+        } else {
+            currNode.next = l2;
+            l2 = l2.next;
+        }
+        currNode = currNode.next;
+    }
+    currNode.next = l1 !== null? l1 : l2;
+
+    return newNode.next
+};
+
+
+
+
+
 
 mergeSortedArrays([0, 3, 4, 31], [3, 4, 6, 30]);
