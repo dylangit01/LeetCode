@@ -4,7 +4,7 @@
  */
 var subsetsBTBSWE = function(nums) {
     const finalSubsets = [];
-    subsetsHelper(0, [], nums, finalSubsets)
+    subsetsHelper(0, [], nums, finalSubsets);
     return finalSubsets;
 };
 
@@ -41,15 +41,15 @@ const subsetsCal = (nums, tempset, index, finalsets) => {
 
 // easies method:
 var subsets = function(nums) {
-    let res = []
-    backtrack(0, [])
+    let res = [];
 
     function backtrack(index, curr) {
-        res.push(curr)
+        res.push(curr);
         for (let i = index; i < nums.length; i++) {
             backtrack(i + 1, [...curr, nums[i]])
         }
     }
 
+    backtrack(0, []);
     return res
-}
+};
