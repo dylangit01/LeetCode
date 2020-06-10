@@ -123,8 +123,8 @@ class LinkedList {
             pre = cur;
             cur = tmp
         }
-        this.head.next = null;
-        this.head = pre;
+        this.head.next = null;   // as after the while loop, the head becomes the last node, so the last.next = null
+        this.head = pre;        // and we need to update the head to pre, then return the pre
         return pre
     }
 }
