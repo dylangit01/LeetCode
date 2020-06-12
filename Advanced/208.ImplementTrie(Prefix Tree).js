@@ -24,17 +24,17 @@ class Trie {
     insert(word) {
         // insert method is traversal the whole trie nodes and if not exist, then create one:
         let node = this.root;
-        // The for/of statement loops through the values of an iterable object.
+        // The for/of statement loops through array, not object, for(let in) is for object.
         for (let character of word) {
-            // if !node[character], we create a new map {} as there are more character need to be added in this map, and let node = this new node, then continue the loop
-            // Here, node is a map, and map[] means the key of its value;
+            // if !node[character], we create a new node => {} as there are more character need to be added in this map, and let node = this new node, then continue the loop
+            // Here, node is a map, node[character] is the key and value
             // so if(!node[character]) means if this map doesn't contain this key and its value
             // Then it will create a new map {} trie node
             if (!node[character]) {
-                // node[character] = new Trie(), same as node[character] = {}
+                // node[character] = new Trie(), same as node[character] = {}, just create a new Trie node
                 node[character] = {};
             }
-            // Keep loop the whole word char:
+            // Then keep travelling through the whole word
             node = node[character]
         }
         // when insert the last character, we add isWordEnd as true, meaning this word ends with this character.

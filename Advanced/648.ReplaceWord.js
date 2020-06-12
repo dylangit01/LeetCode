@@ -86,6 +86,7 @@ class Trie {
                 if(node[char].end) return rootWord;
                 node = node[char]
                 //change below null to word if using map method of replaceWords fun
+                // because we need to keep original word if no need to replace the word
             } else return word
         }
         return word
