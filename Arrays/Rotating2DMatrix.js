@@ -5,6 +5,7 @@
 const rotate = (matrix) => {
     const size = matrix.length - 1;
 
+    // the layer is how many circle that we will finish the rotation, and the calculate way is Math.floor(matrix.length/2), 固定用法
     for(let layer = 0; layer < Math.floor(matrix.length/2); layer ++){
         for(let i = layer; i < size - layer; i ++){
             const top = matrix[layer][i];

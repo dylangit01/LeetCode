@@ -1,3 +1,7 @@
+// Time: O(n)
+// Space: O(1)
+
+
 /**
  * @param {Array<number>} nums
  * @return {Array<number>}
@@ -17,11 +21,10 @@ var nextPermutation = function(nums) {
         swap(nums, i, j)
     }
     // reverse the numbers after index i, so i+1
-    reverse(nums, i+1)
+    reverse(nums, i+1);
     return nums
 
 };
-
 
 const reverse=(nums, start)=> {
     let left = start;
