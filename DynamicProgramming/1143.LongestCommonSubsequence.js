@@ -5,7 +5,8 @@
  */
 var longestCommonSubsequence = function(text1, text2) {
     // below is establish a cache/dp to build a matrix with text1 is row and text2 is column;
-    // the reason to let length + 1 is adding the empty "" to both text string when there is no string to match, when no match, the subsequence will be "0"
+    // the reason to let length + 1 is to add the empty "string" to both text string, when comparing them, whenever one of the text is empty string,
+    // the subsequence/result will be "0", because empty string cannot get common sequence.
     // so for first row and first column array will be "0"
     const dp = Array(text1.length + 1).fill(0).map(()=>Array(text2.length + 1).fill(0));
 
