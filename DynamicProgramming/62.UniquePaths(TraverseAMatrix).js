@@ -7,7 +7,7 @@ const uniquePaths = (rows, cols) => {
     const pathsNums = []; // make pathsNums a Matrix
 
     for(let rowIndex = 0; rowIndex < rows; rowIndex++){
-        // each row has the number of length of cols, so each row has [0, 0, 0, 0, 0, 0, 0, 0...]
+        // each row has the length that is the number of the cols, so each row has [0, 0, 0, 0, 0, 0, 0, 0...]
         const row = Array(cols);
         row.fill(0);
         // initiate pathNums(Matrix) according to rows and cols, every cell is 0;

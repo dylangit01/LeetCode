@@ -2,7 +2,7 @@
 // meaning let num[0] <= num[1], num[1] >= num[2], num[2] <= num[3]...
 // Example:
 //
-//     Input: nums = [3,5,2,1,6,4]
+// Input: nums = [3,5,2,1,6,4]
 // Output: One possible answer is [3,5,1,6,2,4]
 
 let numsArr = [3, 4, 2, 1, 6, 5]
