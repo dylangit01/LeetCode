@@ -22,7 +22,7 @@ var levelOrder = function(root) {
         const currentLayer = [];
 
         const layerSize = queue.length;         // fixed loop times
-        for (let i = 0; i < layerSize; i++) {
+        for (let i = 0; i < layerSize; i++) {   // here cannot use i < queue.length; has to use variable to represent queue.length to update the data
             const currentNode = queue.shift();
 
             // Cannot add if condition: "if(currentNode.val){}"
