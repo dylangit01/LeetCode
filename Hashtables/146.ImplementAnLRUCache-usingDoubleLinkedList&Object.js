@@ -17,8 +17,8 @@ class LRUCacheES6 {
         this.map.delete(key);
         this.map.set(key, value);
         if (this.map.size > this.capacity) {
-            const firstItem = this.map.keys().next().value;
-            this.map.delete(firstItem);
+            const firstNode = this.map.keys().next().value;         // keys().next() ==> next() means indicate the key from the first one
+            this.map.delete(firstNode);
         }
     }
 }
@@ -77,24 +77,26 @@ class DoublyLinkedList {
 class LRUCache {
     constructor(capacity) {
         this.DLL = new DoublyLinkedList();
-        this.map = {};
+        this.obj = {};
         this.capacity = capacity;
     }
 
     get(key) {
-        if (!this.map[key]) return -1;
-        const value = this.map[key].val;
-        this.DLL.remove(this.map[key]);
-        this.map[key] = this.DLL.push(key, value);
+        if (!this.obj[key]) return -1;
+        const value = this.obj[key].val;
+        // the reason to remove it because if cache has this key, we need to move it to the back(re-push it), meaning it's most recently used key
+        this.DLL.remove(this.obj[key]);
+        this.obj[key] = this.DLL.push(key, value);
         return value;
     }
 
     put(key, value) {
-        if (this.map[key]) this.DLL.remove(this.map[key]);
-        this.map[key] = this.DLL.push(key, value);
+        if (this.obj[key]) this.DLL.remove(this.obj[key]);
+        this.obj[key] = this.DLL.push(key, value);
         if (this.DLL.length > this.capacity) {
+            // if the length > the capacity, need to remove this key and remove this node from the DLL as well, since we use DDL to implement LRUC
             const currKey = this.DLL.head.key;
-            delete this.map[currKey];
+            delete this.obj[currKey];
             this.DLL.remove(this.DLL.head);
         }
     }

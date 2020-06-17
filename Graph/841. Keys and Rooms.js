@@ -3,9 +3,11 @@
  * @return {boolean}
  */
 var canVisitAllRooms = function(rooms) {
+    // whenever dealing with Breath First Search, we setup two data structures ==> Queue and Hash-Table;
     const visited = new Set();
     const queue = [];
 
+    // Room would be the node, and mark this Node to the queue and mark it as seen
     queue.push(0);
     visited.add(0);
 

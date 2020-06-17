@@ -11,10 +11,9 @@ const constructOptimalSchedule = (intervals) => {
 
     intervals.forEach(interval => {
         const start = interval[0];
+        const end = interval[1];
 
         if(start > lastScheduleIntervalFinish){
-            const end = interval[1];
-
             optimaSchedule.push(interval);
             lastScheduleIntervalFinish = end;
         }
