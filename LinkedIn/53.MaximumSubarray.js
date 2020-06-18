@@ -1,6 +1,6 @@
-let nums = [-1, 2, 4, 0, 2, -5]
+let nums = [-1, 2, 4, 0, 2, -5];
 
-let dp = new Array(nums.length)
+let dp = new Array(nums.length);
 console.log(dp);   // => [ <6 empty items> ]
 
 // All the DP question,should write down the DP formula

@@ -4,7 +4,7 @@
  * @return {number}
  */
 var search = function(nums, target) {
-    // find sort
+    // find rotated point
     // binary search realMid
     if(nums.length === 0) return -1
 
@@ -15,6 +15,7 @@ var search = function(nums, target) {
     // here has to be left < right
     while(left < right){
         let mid = Math.floor((left+right)/2);
+        // when nums[mid] > nums[right], meaning the decreasing point(rotate point has to be at right, so left = mid + 1, vice versa, right = mid)
         if(nums[mid] > nums[right]){
             left = mid + 1
         } else right = mid

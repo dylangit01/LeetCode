@@ -23,6 +23,7 @@ class ListNode {
 var mergeTwoLists = (l1, l2) => {
     if(!l1 && !l2) return null;
 
+    // create dummy head node:
     let newNode = new ListNode();
     let curNode = newNode;
 
@@ -40,7 +41,7 @@ var mergeTwoLists = (l1, l2) => {
         // we also need to let curNode = curNode.next for each loop to store new list node
         curNode = curNode.next;
     }
-    // one line replaces all below codes from line 45- 55
+    // one line replaces all below codes from line 47- 58
     curNode.next = l1 !== null ? l1 : l2;
 
     // below is to consider if both length are not same, say l1 is longer than l2
@@ -64,7 +65,6 @@ var mergeTwoLists = (l1, l2) => {
 
 
 // Another solution is based on two arrays, not using linked lists structure:
-
 mergeSortedArrays = (array1, array2) => {
     if (array1.length === 0) {
         return array2;
