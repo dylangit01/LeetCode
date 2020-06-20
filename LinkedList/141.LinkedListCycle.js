@@ -41,6 +41,5 @@ const hasCycleII = (head) => {
             return true;
         }
     }
-
     return false;
 };
