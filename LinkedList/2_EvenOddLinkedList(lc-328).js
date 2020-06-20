@@ -26,7 +26,7 @@ const oddEvenList = (head) => {
             evenTail = curr;
         } else {
             oddTail.next = curr;
-            evenTail = curr;
+            oddTail = curr;
         }
         curr = curr.next;
         index++;
@@ -41,7 +41,7 @@ const oddEvenList = (head) => {
     return evenDummyHead.next;
 };
 
-// Method B: Using Fewer Pointers
+// Method B: Using Fewer Pointers, but wont pass Leetcode runtime:
 const evenOddList = (head) => {
     if(head === null || head.next === null) return head;
 

@@ -15,10 +15,13 @@ const addTwoNumbers = (l1, l2) => {
         const second = l2 !== null ? l2.val : 0;
 
         let sum = first + second + carry;
+        // "sum / 10" ==> get the value before period "."
         carry = Math.floor(sum / 10);
 
+        // "sum % 10" ==> get the value after period "."
         newListBuildNode.next = new ListNode(sum % 10);
 
+        // continue calculate rest nodes
         if (l1 !== null) l1 = l1.next;
         if (l2 !== null) l2 = l2.next;
 

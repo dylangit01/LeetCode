@@ -26,7 +26,7 @@ const rotateRight = (head, k) => {
     let rotatedListTail = tail;         // from line 14, the tail is actual tail node of this list
 
     while (stepsToNewTail > 0){
-        // current tail node will be go stepsToNewTail steps
+        // current tail node will be go stepsToNewTail steps from head as tail.next = head in line 23
         rotatedListTail = rotatedListTail.next;
         stepsToNewTail--;
     }
