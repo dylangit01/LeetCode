@@ -10,10 +10,13 @@ const isPalindrome = (x) => {
     // First using log10 to get exact 10 to what number to get x
     // Then chop off the decimal number and add 1 to get total digits of x:
     const logarithmAnswer = Math.log10(x);
+
+    // one reason of getting the totalDigits is to find the mask, another reason is to loop the digit to the middle digit by using the totalDigits / 2
     let totalDigits = Math.floor(logarithmAnswer) + 1;
 
-    // Next,finding the mast by using:
-    let mask = Math.pow(10, totalDigits - 1); //in this case, which is 1000
+    // Next,finding the mask by using: (the reason of getting the mask is to find the most left digit when chopping off the numbers after the most left digit)
+    // So the logic of this solution is to find the most left digit by using x / mask, and to find the most right digit by using x % 10, then to compare with them
+    let mask = Math.pow(10, totalDigits - 1); //in this case, which is 1000 (9239)
     // Then iterate half of this number to compare, but before the mid number:
     for (let i = 0; i < totalDigits / 2; i++) {
         // in this loop, get start digit from left
@@ -24,7 +27,7 @@ const isPalindrome = (x) => {
         if (mostLeftDigit !== mostRightDigit) return false;
         // Next, we need to compare rest of the number x, since we already check first left and right;
         x %= mask;  // this way we chop off the first checked number from the left
-        // Since x already come the rest number, we divided by 10, and floor it to get...
+        // Since x already come the rest number, we divided by 10, and floor it to get the digits that chop off the most right digit
         x = Math.floor(x / 10);
         // finally, since we already cut first left number and right first number,
         // meaning we loose two "zero" for this number x, so the mask has to be reduce two zero as well:
