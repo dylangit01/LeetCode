@@ -2,6 +2,7 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+// O(n!)
 var permute = function(nums) {
     let permutations = [];
 

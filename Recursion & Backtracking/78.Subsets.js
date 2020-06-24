@@ -12,9 +12,11 @@ const subsetsHelper = (currentIndex, tempArray, nums, finalSubsets)=> {
     if(currentIndex === nums.length) return finalSubsets.push(Array.from(tempArray));
 
     tempArray.push(nums[currentIndex]);
+    // when adding the item of nums, we can choose add it or not add it, so it has two choices, below meaning we want to add it
     subsetsHelper(currentIndex + 1, tempArray, nums, finalSubsets);
     // remove what have been added
     tempArray.pop();
+    // another choice is we dont want to add it
     subsetsHelper(currentIndex + 1, tempArray, nums, finalSubsets)
 };
 
