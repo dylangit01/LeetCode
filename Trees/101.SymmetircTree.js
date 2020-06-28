@@ -16,13 +16,11 @@ var isSymmetric = function(root) {
         if(leftRoot === null && rightRoot === null) return true;
 
         if(leftRoot !== null && rightRoot !== null){
-            return leftRoot.val === rightRoot.val &&
-                checkSymmetry(leftRoot.left, rightRoot.right) &&
-                checkSymmetry(leftRoot.right, rightRoot.left)
+            return leftRoot.val === rightRoot.val && checkSymmetry(leftRoot.left, rightRoot.right) && checkSymmetry(leftRoot.right, rightRoot.left)
         }
 
         return false
-    }
+    };
 
     return checkSymmetry(root.left, root.right)
 };

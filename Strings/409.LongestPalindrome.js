@@ -3,19 +3,20 @@
  * @return {number}
  */
 var longestPalindrome = function(s) {
-    let matchings = 0;
+    let matches = 0;
     const unMatchedChars = new Set();
 
     for(let i = 0; i < s.length; i++){
-        const char = s.charAt(i)
+        const char = s.charAt(i);
 
         if(unMatchedChars.has(char)){
             unMatchedChars.delete(char);
-            matchings++
+            matches++
         } else unMatchedChars.add(char)
     }
-
-    let longestPa = matchings *2;
+    // if unMatchedChars has "char", meaning two same chars found, so the matchings++, and longestPa length = matchings * 2
+    let longestPa = matches *2;
+    // when no matches or there are three letters like aab, it can be built as "aba", so the longestPa is 3
     if(unMatchedChars.size !== 0){
         longestPa++
     }

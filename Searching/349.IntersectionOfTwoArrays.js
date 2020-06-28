@@ -38,11 +38,11 @@ const intersectionII = (nums1, nums2) => {
             idx1++;
             idx2++
         }
-        // need to consider the situation that they nums are not equal and which number is less, we keep this array to continue loop as we need to find the sorted merged array
+        // need to consider the situation that the nums are not equal and which number is less, we keep this array to continue loop as we need to find the sorted merged array
         else if(nums1[idx1] < nums2[idx2]){   // meaning we keep the num1 to next value to compare
             idx1++
         } else {
-            idx2 ++
+            idx2++
         }
     }
     return Array.from(intersection)

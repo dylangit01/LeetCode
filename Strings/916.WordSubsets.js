@@ -11,7 +11,7 @@ var wordSubsets = function(A, B) {
         const output = Array(26).fill(0);
 
         for(let i = 0; i < word.length; i ++){
-            const letter = word.charAt(i)
+            const letter = word.charAt(i);
 
             const idx = letter.charCodeAt(0) - "a".charCodeAt(0);
             output[idx] += 1;

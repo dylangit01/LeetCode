@@ -28,8 +28,8 @@ var search = function (nums, target) {
         let realMidNumIndex = (mid + rotateIndex) % n;
 
         if (nums[realMidNumIndex] === target) return realMidNumIndex;
-        else if (nums[realMidNumIndex] > target) right = mid - 1;
-        else left = mid + 1
+        else if (nums[realMidNumIndex] > target) right = mid--;
+        else left = mid++
     }
     return -1
 };

@@ -11,7 +11,7 @@
  */
 
 isValidBST = (root) => {
-    return isNodeValid(root, Number.MIN_VALUE, Number.MAX_SAFE_INTEGER)
+    return isNodeValid(root, Number.MIN_SAFE_INTEGER, Number.MAX_SAFE_INTEGER)
 };
 
 const isNodeValid = (node, min, max) => {

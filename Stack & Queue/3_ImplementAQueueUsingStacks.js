@@ -5,6 +5,7 @@ class CrazyQueue {
     }
     enqueue(value){
         // below codes when dequeue one item, then have to push into last array, and then push new item, so that if we need to pop out, it has right order to be popped out
+        // at begin, no value in both arrays, so only push to last at very beginning, e.g: last = [1, 2, 3]
         let length = this.first.length;
         for(let i = 0; i < length; i ++){
             this.last.push(this.first.pop())
@@ -13,6 +14,7 @@ class CrazyQueue {
         return this
     }
 
+    // when dequeue: need to reverse the order of the last array into first array: [3, 2, 1], then pop(), the pop one is the 1st item that had been added into last
     dequeue(){
         let length = this.last.length;
         for(let i = 0; i < length; i ++){
