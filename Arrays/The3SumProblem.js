@@ -20,7 +20,8 @@ const threeSum = (arr) => {
 
 };
 const findTwoSum = (rootIndex, array, allThreeSumObj = {}) => {
-  let left = rootIndex + 1; // here we let arr[rootIndex] as the 1st number of allThreeSum;
+  let left = rootIndex + 1; // here we let arr[rootIndex] as the 1st number of allThreeSum, so arr[left] is the 1st
+  // number after arr[rootIndex];
   let right = array.length - 1;
 
   while (left < right) {
