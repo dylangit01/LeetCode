@@ -1,76 +1,58 @@
 /**
- * @param {Array<number>} arr
- * @return {Array<Array<number>>}
+ * @param {number[]} nums
+ * @return {number[][]}
  */
-const threeSum = (arr) => {
-  // Sort this arr, so that we can using two pointer approach
-  arr.sort((a, b) => a - b);
+var threeSum = function(nums) {
+  nums.sort((a,b) => a - b);
+  const triplets = [];
 
-  // Using hash table to prevent repeated passes, we also have to initiate a new Set(),so that findTwoSum function can use add function.
-  let allThreeSums = new Set();
-  // We are going to loop this arr, and we will end this loop when i < arr.length -2, because we need total three number, so if we need sum 4 numbers, we need to change to length -3;
-  const maxLoopLength = arr.length - 2;
+  for(let i=0; i < nums.length - 2; i++){
+    if(nums[i] !== nums[i-1]){ // making sure our solution set does not contain duplicate triplets
+      let left = i + 1;
+      let right = nums.length - 1;
 
-  for (let i = 0; i < maxLoopLength; i++) {
-    findTwoSum(i, arr, allThreeSums)
+      while (left < right){
+        const currentSum = nums[i] + nums[left] + nums[right];
+        if (currentSum === 0){
+          triplets.push([nums[i], nums[left], nums[right]]);
+          while(nums[left] === nums[left + 1]) left ++;
+          while(nums[right] === nums[right - 1]) right --; // making sure our solution set does not contain
+          // duplicate triplets
+          left ++;
+          right --;
+        } else if(currentSum < 0) {
+          left ++
+        } else if(currentSum > 0){
+          right --
+        }
+      }
+    }
   }
-
-  return Array.from(allThreeSums)
-
-
-};
-const findTwoSum = (rootIndex, array, allThreeSumObj = {}) => {
-  let left = rootIndex + 1; // here we let arr[rootIndex] as the 1st number of allThreeSum, so arr[left] is the 1st
-  // number after arr[rootIndex];
-  let right = array.length - 1;
-
-  while (left < right) {
-    const threeNumberSum = array[rootIndex] + array[left] + array[right];
-
-    if (threeNumberSum === 0) {
-// here we use left++ and right-- because when threeNumberSum === 0, next time, we still need to add other numbers' sum when they are === 0, that's why using left++ and right--
-      allThreeSumObj.add([array[rootIndex], array[left++], array[right--]])
-    } else if (threeNumberSum < 0) {
-      left++
-    } else right--
-  }
+  return triplets
 };
 
+// Practice:
+const threeSumP = nums => {
+  nums.sort((a, b) => a - b);
+  const output = [];
 
-// practice:
-/**
- * @param {Array<number>} A
- * @return {Array<Array<number>>}
- */
-const threeSumP = (A) => {
-  A.sort((a, b) => a - b);
+  for(let i = 0; i< nums.length -2; i++){
+    if(nums[i] !== nums[i - 1]){
+      let left = i + 1, right = nums.length - 1;
 
-  let allThreeSums = new Set();
-
-  const maxLoopLength = A.length - 2;
-
-  for (let i = 0; i < maxLoopLength; i++) {
-    findTwoSumP(i, A, allThreeSums)
+      while(left < right){
+        const threeSumTotal = nums[i] + nums[left] + nums[right];
+        if(threeSumTotal === 0){
+          output.push([nums[i], nums[left], nums[right]]);
+          while(nums[left] === nums[left + 1]) left++;
+          while(nums[right] === nums[right - 1]) right--;
+          left++;
+          right--;
+        } else if (threeSumTotal < 0) left++;
+        else right--
+      }
+    }
   }
-
-  return Array.from(allThreeSums)
-
-};
-
-const findTwoSumP = (rootIndex, arr, allThreeSums) => {
-  let left = rootIndex + 1;
-  let right = arr.length - 1;
-
-  while (left < right) {
-    const threeNumSum = arr[rootIndex] + arr[left] + arr[right];
-
-    if (threeNumSum === 0) {
-      allThreeSums.add([arr[rootIndex], arr[left++], arr[right--]])
-    } else if (threeNumSum < 0) {
-      left++
-    } else right--
-
-  }
-
+  return output;
 };
 
