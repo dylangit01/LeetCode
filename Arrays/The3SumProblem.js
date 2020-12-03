@@ -54,7 +54,7 @@ const threeSum = (A) => {
 
     return Array.from(allThreeSums)
 
-}
+};
 
 const findTwoSum = (rootIndex, arr, allThreeSums) => {
     let left = rootIndex + 1;

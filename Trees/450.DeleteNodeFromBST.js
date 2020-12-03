@@ -17,7 +17,8 @@ deleteNode = (root, key) => {
 
         // if both child nodes exist of this root, we want the next node in the inorder traversal after this root.right' node to take this root's place;
         const nextInorderNode = inorderTraversal(root.right);
-        root.val = nextInorderNode.val
+        // delete the root.val, meaning replace it with the nextInorderNode.val
+        root.val = nextInorderNode.val;
         // Then we need to delete the inorder node since it already replaced the root.val, meaning the nextInorderNode.val === root.val === key,
         // so we need to recursively update the root.right nodes to make sure it's not the right subtree anymore.
         root.right = deleteNode(root.right, nextInorderNode.val)
@@ -53,8 +54,7 @@ const inorderTraversal = (node) => {
  * @return {TreeNode}
  */
 var deleteNode = function(root, key) {
-    if (!root)
-        return root;
+    if (!root) return root;
 
     if (root.val === key){
         if (!root.left && !root.right){

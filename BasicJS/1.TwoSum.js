@@ -17,12 +17,12 @@
 
 // practice:
 let twoSum = (nums, target) => {
-    let map = {};
+    let obj = {};
     for(let i = 0; i < nums.length; i ++){
         let diffNum = target - nums[i];
-        if(map[diffNum] !== undefined){
-            return [map[diffNum], i]
+        if(obj[diffNum] !== undefined){
+            return [obj[diffNum], i]
         }
-        map[nums[i]] = i
+        obj[nums[i]] = i
     }
 };
