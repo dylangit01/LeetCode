@@ -6,7 +6,7 @@
 var search = function (nums, target) {
   // find rotated point (the first item index of original array)
   // binary search realMid
-  if (nums.length === 0) return -1
+  if (nums.length === 0) return -1;
 
   let n = nums.length;
   let left = 0;
