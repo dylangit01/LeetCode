@@ -23,8 +23,7 @@ var search = function (nums, target) {
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
 
-        // this calculation can get the real mid Index of sorted array(before rotated), actually, (mid + rotateIndex) must === n, so thee realMidNumIndex must === 0, which is the first num value
-        // and binary search is searching based on the real mid index value
+        // Below calculation can get the real mid "Index" (not mid-value) of unsorted array(before rotated)
         let realMidNumIndex = (mid + rotateIndex) % n;
 
         if (nums[realMidNumIndex] === target) return realMidNumIndex;
