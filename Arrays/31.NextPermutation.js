@@ -31,7 +31,7 @@ const reverse=(nums, start)=> {
     let right = nums.length - 1;
 
     while(left < right){
-        swap(nums, left, right)
+        swap(nums, left, right);
         left ++;
         right --;
     }

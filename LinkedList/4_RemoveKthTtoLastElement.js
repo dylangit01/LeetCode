@@ -25,3 +25,24 @@ const removeKthToLast = (head, k) => {
     return dummyHead.next
 
 };
+
+// DOUBLE POINTER: Right is the fast pointer based on K, left is the slow pointer based on right pointer movement
+// when (while(right))
+const removeKthToLastII = (head, k) => {
+    const dyHead = new ListNode();
+    dyHead.next = head;
+
+    let right = head;
+    while(k > 0){
+        right = right.next;
+        k--
+    }
+
+    let left = dyHead;
+    while(right){
+        right = right.next;
+        left = left.next;
+    }
+    left.next = left.next.next;
+    return dyHead.next;
+}

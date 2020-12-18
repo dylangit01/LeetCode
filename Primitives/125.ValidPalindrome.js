@@ -1,5 +1,5 @@
 isPalindromeString = (s)=> {
-    s = s.toLowerCase().replace(/[\W_]/g, '');
+    s = s.toLowerCase().replace(/[\W_]/g, '');    // replace all non-wold character
     let left = 0;
     let right = s.length-1;
 

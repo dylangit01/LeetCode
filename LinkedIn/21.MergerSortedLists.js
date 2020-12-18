@@ -34,7 +34,7 @@ var mergeTwoLists = (l1, l2) => {
             // let this loop continue run until l1.next = null, while loop ends
             l1 = l1.next;
         } else {
-            // same to l2
+            // same as above
             curNode.next = l2;
             l2 = l2.next;
         }
