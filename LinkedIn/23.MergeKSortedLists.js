@@ -105,7 +105,7 @@ var mergeKLists = function(lists) {
     if(lists.length === 0) return null;
 
     while(lists.length > 1) {
-        const l1 = lists.shift(); // pop list from front of the array
+        const l1 = lists.shift(); // pop list from front of the array as we need the sorted arrays
         const l2 = lists.shift();
 
         lists.push(merge(l1, l2));

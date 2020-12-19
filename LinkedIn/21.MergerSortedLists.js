@@ -41,7 +41,8 @@ var mergeTwoLists = (l1, l2) => {
         // we also need to let curNode = curNode.next for each loop to store new list node
         curNode = curNode.next;
     }
-    // one line replaces all below codes from line 47- 58
+    // Next need to consider if two lists are not same length:
+    // (one line replaces all below codes from line 47- 58)
     curNode.next = l1 !== null ? l1 : l2;
 
     // below is to consider if both length are not same, say l1 is longer than l2
